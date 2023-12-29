@@ -1,0 +1,45 @@
+<!-- sortbydeadline.ejs -->
+
+<div class="container-fluid container-fluid-custom pb-5 mb-5">
+
+    <div class="row mb-4">
+      <div class="col">
+      </div>
+      <div class="col text-end">
+        <a href="/dashboard" class="btn btn-primary">Back to Dashboard</a>
+      </div>
+    </div>
+  
+    <!-- Render tasks for each priority -->
+    <% for (const priority in sortedTasks) { %> <% console.log('Priority:', priority); %>
+      <div class="row">
+        <h2 class="mb-3"><%= priority.charAt(0).toUpperCase() + priority.slice(1) %> Tasks</h2>
+        <% const tasks = sortedTasks[priority]; %>
+        <% if (tasks.length > 0) { %>
+          <% for (let i = 0; i < tasks.length; i++) { %>
+            <div class="col-sm-3 mb-4">
+              <div class="card border-primary" style="min-height: 210px">
+                <div class="card-body">
+                  <h5 class="card-title"><%= tasks[i].title %></h5>
+                  <p class="card-text"><%= tasks[i].description %></p>
+                  <p class="card-text">Remaining: <%= tasks[i].formattedRemainingTime %></p>
+                  <a href="/dashboard/item/<%= tasks[i]._id %>" class="stretched-link"></a>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } else { %>
+          <div class="row">
+            <div class="col-3">
+              <img src="/img/human-3.svg" alt="Human pointing hand toward a create button">
+            </div>
+            <div class="col mt-md-4">
+              <h4>No tasks with <%= priority %> priority.</h4>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  
+  </div>
+  
