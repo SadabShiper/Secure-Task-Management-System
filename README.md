@@ -6,6 +6,7 @@ This simple task management application is built using HTML, CSS, Node.js, Expre
 - Sort tasks based on deadline, priority
 - User authentication for secure task management
 - Responsive design for a seamless experience across devices
+- Search feature to find specific tasks 
 
 ## Technologies Used
 - **Frontend**: HTML, CSS, EJS template engine
